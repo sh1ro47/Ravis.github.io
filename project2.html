@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <!--
-	Data Analyst Portfolio
-	muskankashyap40@gmail.com
+	Ravikant Shrivas - Sales Analytics Project
+	ravikant2001benzenei@gmail.com
 -->
 <html>
 	<head>
-		<title>Data Analyst Portfolio</title>
+		<title>Sales Performance Dashboard</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -18,7 +18,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<a href="index.html" class="logo"><strong>DATA ANALYST</strong> <span>PORTFOLIO</span></a>
+						<a href="index.html" class="logo"><strong>DATA ENGINEER</strong> <span>PORTFOLIO</span></a>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
@@ -42,46 +42,133 @@
 								<div class="inner">
 									<header class="major">
 										<h1>Project-2</h1>
-										<h2>Building Blocks of Success: Unraveling LEGO Sales Data || Python</h2>
+										<h2>Atliq Hardware Sales & Financial Performance Dashboard | SQL, Power BI, DAX</h2>
 									</header>
 								
-									<span class="image main"><img src="images/lego.jpg" alt=" " width="100" height="400" /></span>
+									<span class="image main"><img src="images/sales-dashboard.jpg" alt="Sales Dashboard Screenshot" /></span>
 									
-									<p>Embark on a data-driven journey through the dynamic world of LEGO, unraveling insights from two essential datasets,
-										"lego_sets.csv" and "parent_themes.csv," sourced from Kaggle.</p>
+									<p>Developed a comprehensive business intelligence solution for Atliq Hardware to analyze sales performance across 500,000+ records, enabling data-driven decision making through interactive dashboards and advanced analytics.</p>
 								
-									<h3>Objective</h3>
-									<p>Merge datasets seamlessly, eliminating irrelevant columns to craft a refined dataset. This sets the stage for an
-										insightful Exploratory Data Analysis (EDA) focused on LEGO sets and parent themes.</p>
+									<h3>Project Workflow:</h3>
+									<p>The solution followed a complete analytics pipeline from data extraction to visualization:</p>
+								
+									<h4>1. Data Extraction & Preparation:</h4>
+									<ul>
+										<li>Connected to MySQL database containing transactional sales data</li>
+										<li>Developed complex SQL queries for data extraction with:
+											<ul>
+												<li>Multi-table joins across sales, customers, products</li>
+												<li>Window functions for YoY comparisons</li>
+												<li>CTEs for query optimization</li>
+											</ul>
+										</li>
+										<li>Implemented incremental refresh strategy for large datasets</li>
+									</ul>
+								
+									<h4>2. Data Transformation & Modeling:</h4>
+									<ul>
+										<li>Cleaned 500,000+ records handling:
+											<ul>
+												<li>Missing values in customer demographics</li>
+												<li>Inconsistent product categorization</li>
+												<li>Outliers in sales transactions</li>
+											</ul>
+										</li>
+										<li>Built star schema data model with:
+											<ul>
+												<li>Fact tables: Sales, Returns</li>
+												<li>Dimension tables: Date, Products, Customers, Markets</li>
+												<li>Established proper relationships with referential integrity</li>
+											</ul>
+										</li>
+									</ul>
 
-										<h3>The Story begins..</h3>
-										<p>Once upon a time in the vibrant world of LEGO, where every misstep was a dance with plastic pain, I—a brave soul who once shed tears over a misplaced LEGO piece—embarked on a data-driven quest. Armed with Pandas and a sprinkle of nostalgia, I set out to uncover the secrets hidden within LEGO dataset.</p>
+									<h4>3. Dashboard Development:</h4>
+									<div class="box">
+										<p>Created three interconnected dashboards with 25+ visualizations:</p>
+										<ul>
+											<li><strong>Executive Overview:</strong> High-level KPIs with drill-through capabilities</li>
+											<li><strong>Sales Performance:</strong> Regional analysis with market benchmarking</li>
+											<li><strong>Profitability Analysis:</strong> Margin trends and product performance</li>
+										</ul>
+									</div>
+
+									<h3>Advanced Analytics Features:</h3>
+									<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>Feature</th>
+													<th>Implementation</th>
+													<th>Business Impact</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Dynamic KPIs</td>
+													<td>DAX measures with time intelligence</td>
+													<td>Real-time performance tracking</td>
+												</tr>
+												<tr>
+													<td>Market Share Analysis</td>
+													<td>Ranking calculations</td>
+													<td>Identified growth opportunities</td>
+												</tr>
+												<tr>
+													<td>Profitability Trends</td>
+													<td>Moving averages</td>
+													<td>Improved pricing strategies</td>
+												</tr>
+												<tr>
+													<td>Inventory Analysis</td>
+													<td>ABC classification</td>
+													<td>Reduced stockouts by 18%</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<h3>Key DAX Measures Implemented:</h3>
+									<pre><code>// Sales Growth YoY
+Sales Growth % = 
+VAR CurrentSales = [Total Sales]
+VAR PriorSales = CALCULATE([Total Sales], SAMEPERIODLASTYEAR('Date'[Date]))
+RETURN DIVIDE((CurrentSales - PriorSales), PriorSales)
+
+// Profit Margin
+Profit Margin % = 
+DIVIDE([Total Profit], [Total Sales], 0)
+
+// Running Total
+Running Total Sales = 
+CALCULATE(
+    [Total Sales],
+    FILTER(
+        ALLSELECTED('Date'[Date]),
+        'Date'[Date] <= MAX('Date'[Date])
+    )
+)</code></pre>
+
+									<h3>Technical Stack:</h3>
+									<ul class="alt">
+										<li><strong>Database:</strong> MySQL</li>
+										<li><strong>ETL:</strong> Power Query (M Language)</li>
+										<li><strong>Visualization:</strong> Power BI</li>
+										<li><strong>Analytics:</strong> DAX, SQL</li>
+										<li><strong>Deployment:</strong> Power BI Service</li>
+									</ul>
 								
-									
-											<h3>Act 1: The Merge Magic</h3>
-											<p>Like a seasoned LEGO builder connecting bricks with precision, I seamlessly merged datasets, crafting a refined masterpiece. Unnecessary columns vanished faster than a LEGO piece under the sofa, leaving a polished dataset ready for its moment in the spotlight.</p>
-											
-											<h3>Act 2: Star Wars Saga - The Galactic Ruler and Childhood Memories</h3>
-											<p>In a galaxy not so far away, where childhood memories were built brick by brick, Star Wars-themed sets emerged as the undisputed rulers, constituting a whopping 51% of all licensed sets. Ah, Star Wars—the epic battles fought with lightsabers.</p>
-											<p>As I sifted through the data, I couldn't help but reminisce about the times when Star Wars LEGO sets were not just toys but portals to epic adventures. I vividly recall the day I, unsuspectingly barefoot, encountered the full force of the dark side—the pain of stepping on an elusive LEGO piece.</p>
-								
-											<h3>Act 3: Temporal Time Travel</h3>
-											<p>Armed with a LEGO time machine (metaphorically speaking), I delved into temporal insights. The year 1960, marked by simplicity in LEGO uniqueness, saw only 7 unique sets. Fast forward to 2014, and it was a LEGO explosion—a year so unique it practically wore a cape. I couldn't help but marvel at how the LEGO landscape had transformed over the decades, much like our own journey.</p>
-										
-											<h3>Act 4: Uniqueness Unleashed</h3>
-											<p>Defining uniqueness became my LEGO mantra. From a modest start in 1950 to the swinging '60s with 120-140 unique sets, uniqueness soared through the years. The climax hit in 2014, much like our childhood superhero dreams.</p>
-									
-											<h3>The Grand Finale: Insights Illuminated</h3>
-											<p>The adventure reached its conclusion with key insights lighting up like LEGO bricks in the dark. Star Wars, the perennial favorite, faced a momentary dethroning in 2017. Superheroes, always ready for a plot twist, took center stage, proving that even in the LEGO universe, stories evolve.</p>
-											<p>In this LEGO-themed tale, the bricks and blocks told a story—a narrative spun from data. From the timeless allure of Star Wars to the rollercoaster of set uniqueness, this journey showcased the magic of transforming raw data into decision-making gold.</p>
-										
-											<h3>Epilogue:</h3>
-											<p>This data-driven odyssey isn't just about LEGO—it's a testament to the power of data analysis. The ability to find humor in columns, merge datasets like a pro, and unveil insights in a story-like fashion is a skill every data explorer should have. So here's to more adventures in data, where every dataset is a new realm waiting to be explored!</p>
-										
+									<h3>Business Outcomes:</h3>
+									<ul>
+										<li>Reduced monthly reporting time from 8 hours to 15 minutes</li>
+										<li>Identified underperforming markets leading to 12% revenue increase</li>
+										<li>Improved inventory turnover by 22% through better visibility</li>
+										<li>Enabled self-service analytics for regional managers</li>
+									</ul>
 								</div>
-								     <ul class="actions">
-									     <li><a href="https://github.com/muskan0830/Unraveling-LEGO-Sales-Data" class="button next">See Code Here</a></li>
-								     </ul>
+								<ul class="actions">
+									<li><a href="https://github.com/shlro47/Atliq-Sales-Dashboard" class="button next">View Project Code</a></li>
+								</ul>
 							</section>
 
 					</div>			
@@ -90,12 +177,12 @@
 		<footer id="footer">
 			<div class="inner">
 				<ul class="icons">
-					<li><a href="https://github.com/muskan0830" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-					<li><a href="https://www.linkedin.com/in/muskan-kashyap-480182275/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-					<li><a href="mailto:muskankashyap40@gmail.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+					<li><a href="https://github.com/shlro47" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="https://www.linkedin.com/in/ravikant-shrivas15/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					<li><a href="mailto:ravikant2001benzenei@gmail.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
 				</ul>
 				<ul class="copyright">
-					<li>&copy; Porfolio</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+					<li>&copy; Ravikant Shrivas</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
 				</ul>
 			</div>
 		</footer>
